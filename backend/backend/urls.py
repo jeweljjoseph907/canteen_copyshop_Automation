@@ -16,8 +16,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import JsonResponse
+
+def backend_message(request):
+    return JsonResponse({"message": "Django backend is working!"})
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('orders.urls')),  # Connect API
+    path("api/message/", backend_message),  # URL for the API
 ]

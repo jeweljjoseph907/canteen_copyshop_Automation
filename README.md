@@ -1,99 +1,146 @@
-# CopyShop Automation Project
+# College Copyshop Order System (PWA)
 
-This project is a full-stack web application that integrates a Next.js frontend with a Django backend. The Next.js app fetches data from the Django API and displays it dynamically.
+A Progressive Web App (PWA) for managing college copyshop orders with separate interfaces for students and administrators.
 
 ## Features
-- **Next.js frontend** with Tailwind CSS for styling.
-- **Django backend** serving API endpoints.
-- **Fetch API integration** to get dynamic data from Django.
-- **Deployable** to Vercel (for Next.js) and any Django-compatible hosting service.
+
+### React-based PWA with Material-UI for professional UI components
+
+#### Student Interface:
+- File upload with preview
+- Order customization (paper size, color, quantity, finishing options)
+- Real-time pricing calculator
+- Order submission with payment integration
+
+#### Admin Interface:
+- Order management dashboard
+- Status updates (pending, printing, ready, completed)
+- DataGrid for efficient order viewing
+
+#### Backend API with Node.js/Express and MongoDB
+
+### PWA Capabilities:
+- Offline functionality
+- Installable on devices
+- Fast loading
 
 ## Prerequisites
-- Node.js (v18+ recommended)
-- Python (v3.8+ recommended)
-- Django (v4+ recommended)
+- Node.js (v16+ recommended)
+- MongoDB (v5+ recommended)
+- Yarn or npm
 
 ## Installation & Setup
 
 ### 1️⃣ Clone the Repository
 ```sh
-git clone [https://github.com/nexussjcet/canteen_copyshop_Automation.git cd canteen_copyshop_Automation]
+git clone https://github.com/nexussjcet/canteen_copyshop_Automation.git
+cd canteen_copyshop_Automation
 ```
 
-### 2️⃣ Set Up the Django Backend
+### 2️⃣ Set Up the Backend
+
 #### Install dependencies:
 ```sh
 cd backend
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-```
-#### Run the development server:
-```sh
-python manage.py runserver
-```
-#### API Endpoint Example:
-The Django backend provides an API at:
-```
-http://127.0.0.1:8000/api/message/
-```
-
-### 3️⃣ Set Up the Next.js Frontend
-#### Install dependencies:
-```sh
-cd frontend
 npm install
 ```
+
+#### Set up environment variables:
+Create `.env` file with:
+```env
+MONGODB_URI=mongodb://localhost:27017/copyshop
+PORT=5000
+JWT_SECRET=your_secret_key
+```
+
+#### Run the development server:
+```sh
+node server.js
+```
+
+### 3️⃣ Set Up the Frontend
+
+#### Install dependencies:
+```sh
+cd ../frontend
+npm install
+```
+
 #### Start the development server:
 ```sh
 npm run dev
 ```
-Now visit `http://localhost:3000/` to see the Next.js app running.
+
+Now visit [http://localhost:5173](http://localhost:5173) to access the application.
 
 ## Project Structure
 ```
-/your-repo
-│── backend/       # Django backend
-│   ├── api/       # Django app containing API endpoints
-│   ├── manage.py  # Django project manager
-│   ├── ...        # Other Django files
+/canteen_copyshop_Automation
+│── backend/             # Node.js backend
+│   ├── models/         # MongoDB models
+│   ├── routes/        # API routes
+│   ├── server.js      # Backend entry point
 │
-│── frontend/      # Next.js frontend
-│   ├── pages/     # Next.js pages
-│   ├── public/    # Static assets
-│   ├── styles/    # Global styles
-│   ├── ...        # Other frontend files
+│── frontend/          # React PWA frontend
+│   ├── src/
+│   │   ├── components/ # React components
+│   │   ├── pages/     # Main views
+│   │   ├── api.js     # API service
+│   │   ├── App.jsx    # Root component
+│   ├── public/        # Static assets
+│   ├── vite.config.js # Vite configuration
 │
-│── README.md      # Project documentation
+│── README.md          # Project documentation
 ```
 
-## API Endpoint Example
-The Django backend provides the following API:
+## API Endpoints
 
-| Method | Endpoint          | Description                     |
-|--------|------------------|---------------------------------|
-| GET    | `/api/message/`  | Returns a message from backend |
+| Method | Endpoint            | Description               |
+|--------|---------------------|---------------------------|
+| POST   | `/api/orders`       | Create new order         |
+| GET    | `/api/orders`       | Get all orders (admin)   |
+| PATCH  | `/api/orders/:id`   | Update order status      |
 
 ## Deployment
 
-### Deploying Next.js to Vercel
+### Frontend Deployment (Vercel)
 ```sh
+cd frontend
+npm run build
 vercel
 ```
-Follow the instructions to deploy your frontend.
 
-### Deploying Django Backend
-- Use **Railway**, **Render**, or **Heroku** to deploy your Django backend.
+### Backend Deployment (Render/Railway)
+1. Set up MongoDB Atlas for production database
+2. Configure environment variables
+3. Deploy using:
+```sh
+git push
+```
+
+## PWA Features
+- **Installation**: Users can install the app on their devices
+- **Offline Mode**: Basic functionality works without internet
+- **Fast Loading**: Service worker caches assets for quick loading
+
+## Testing
+
+### Student Flow:
+1. Access [http://localhost:5173](http://localhost:5173)
+2. Upload files and place an order
+3. Verify order appears in admin view
+
+### Admin Flow:
+1. Access [http://localhost:5173/admin](http://localhost:5173/admin)
+2. Update order statuses
+3. Verify changes reflect in database
 
 ## Troubleshooting
-- Ensure both the **backend** and **frontend** are running.
-- If API calls fail, check CORS settings in Django.
-- Run `npm run lint` to check for frontend errors.
+- **Blank Page**: Check browser console for errors
+- **API Connection Issues**: Ensure backend is running on port 5000
+- **Database Issues**: Verify MongoDB is running
+- **PWA Installation**: Must be served over HTTPS in production
 
 ## License
 This project is licensed under the MIT License.
-
----
-
-Happy coding! 🚀
 

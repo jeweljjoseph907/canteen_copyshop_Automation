@@ -1,0 +1,108 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Cache directories
+.cache/
+.temp/
+.vite/
+.parcel-cache/
+
+# Build directories
+dist/
+dist-ssr/
+build/
+out/
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.development
+.env.production
+.env.test
+
+# Debug files
+debug.log
+*.debug
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.swp
+*.swo
+
+# System files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Testing
+coverage/
+.nyc_output/
+*.lcov
+
+# Backend specific
+uploads/
+storage/
+
+# MongoDB
+data/db/
+*.ns
+*.0
+*.1
+*.2
+*.3
+*.4
+*.5
+*.6
+*.7
+*.8
+*.9
+*.lock
+mongod.lock
+storage.bson
+
+# Optional REPL history
+.node_repl_history
+
+# Frontend specific
+*.css.map
+*.js.map
+*.stats.html
+
+# PWA files
+sw.js
+workbox-*.js
+precache-manifest.*
+
+# Package manager specific
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Backend uploads
+backend/uploads/
+!backend/uploads/.gitkeep
